@@ -1,0 +1,18 @@
+{
+  "name": "fiverr",
+  "version": "1.0.0",
+  "description": "To-do created with MEAN stack skills for Payporte.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon start"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "ejs": "^2.5.7",
+    "express": "^4.16.2",
+    "nodemon": "^1.15.0"
+  }
+}
