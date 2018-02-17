@@ -1,5 +1,6 @@
 $(document).ready(function(){
   
+  /*Ajax post requests*/
     $('form').on('submit', function(){
   
         var item = $('form input');
@@ -18,7 +19,9 @@ $(document).ready(function(){
         return false;
   
     });
-  
+    /*End of Ajax POST requests*/
+
+      /*Ajax delete request*/
     $('li').on('click', function(){
         var item = $(this).text().replace(/ /g, "-");
         $.ajax({
@@ -30,6 +33,7 @@ $(document).ready(function(){
           }
         });
     });
+    /*End of Ajax delete request*/
   
   });
   
