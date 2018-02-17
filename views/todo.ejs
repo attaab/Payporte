@@ -26,7 +26,7 @@ We'd love to hear from you.
   <div id="todo-table">
 		<!-- form for adding items -->
 		
-		<form action="/" method="post" atuocomplete="off">
+		<form action="/todo" method="post" atuocomplete="off">
 			<input type="text" name="item" placeholder="Add new item..." required>
 			<button type="submit">Add item</button>
 		</form>
@@ -34,7 +34,7 @@ We'd love to hear from you.
 		<!-- this is where items are added on the page-->
 		   <ul>
 				  <% for(i = 0; i < todos.length; i++) {%>
-				      <li><%=todos[i].item%></li>
+				      <li><%=todos[i].item%><span class="delete">X</span></li>
 				  <% } %>
 		   </ul>
 		<!-- end of where items are added on the page -->

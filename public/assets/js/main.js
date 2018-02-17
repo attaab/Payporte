@@ -22,14 +22,17 @@ $(document).ready(function(){
     /*End of Ajax POST requests*/
 
       /*Ajax delete request*/
-    $('li').on('click', function(){
-        var item = $(this).text().replace(/ /g, "-");
+    $('.delete').on('click', function(){
+        var item = $(this).parent().text().replace(/ /g, "-"),
+            stringLength = $(this).parent().text().length -1;
+        newItem = $(this).parent().text().slice(0, stringLength).replace(/ /g, "-")/*slicing out the appended X and replacing all spaces with hypens*/;
+
         $.ajax({
           type: 'DELETE',
-          url: '/todo/' + item,
+          url: '/todo/' + newItem,
           success: function(data){
             //do something with the data via front-end framework
-            location.reload();
+             location.reload();
           }
         });
     });
