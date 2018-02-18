@@ -113,3 +113,6 @@ h4 {
 ul.done-tasks li {
 
 }
+.drag {
+    cursor: focus;
+}

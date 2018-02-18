@@ -1,9 +1,9 @@
   $(document).ready(function(){
     
     /*Ajax post requests*/
-      $('form').on('submit', function(){
+      $('#main-form').on('submit', function(){
     
-          var item = $('form input');
+          var item = $('#write');
           var todo = {item: item.val()};
     
           $.ajax({
@@ -66,7 +66,9 @@
      });
       /*End of creating function that allows x to be visible when it is hovered*/
       
-      
+        /*making the items draggable*/
+        $('.drag').draggable();
+        /*End of making the items draggable*/  
     
     });
     

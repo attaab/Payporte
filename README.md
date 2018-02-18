@@ -1,6 +1,6 @@
 ###                                                                                                                  Payporte TO-DO application.
 
-**MEN** had to go into the server for this. lets give them a minute silence.
+**MEN** had to go into the server to make this happen. lets give them a minute silence.
 these men are named below - __Be warned their names may make you shiver__<br>
 #MongoDB.
 #Express.
@@ -15,7 +15,7 @@ This is a to-do app made with MEAN stack skills for [Payporte](www.payporte.com)
 2. To create and retireve multiple queries from the database using mongoose and then pass it to the view, a Nodejs module called __async__ had to be used. see [async documentation](http://caolan.github.io/async/docs.html#series) to learn more.
 3. To learn more about mongoose you can go over to the [documentation](http://mongoosejs.com). or check out their [npm docs]()
 
-**Tips**
+**Tips💡**
 You might find this youtube videos  helpful to visually learn the extra resources mentioned in **Note**
 1. [dontenv / Envionment Variables.](https://www.youtube.com/watch?v=HRBNeERE5PU).
 2. [Async.js](https://www.youtube.com/watch?v=8_gcTR6fn94).

@@ -107,16 +107,37 @@ module.exports = function (app) {
                /*include flash message in future times*/
            } else {
                console.log('item saved');
-               res.json(data)   ;
+               res.redirect("/");
            };
 
        });
        }
        /*trying to save item to database*/
-
       
    });
    /*End of getting data from view and adding it to database but also making sure that its not an empty string*/
+
+   /*Function for editting todo tasks*/
+   app.post('/todo/edit/:id',urlencodedParser, (req, res) => {
+        let item = {},
+            query = {_id : req.params.id};
+            item.item = req.body;
+
+    Todo.update(query, item, (err, data) => {
+        if (err) {
+            console.log('error in saving item: ' + err);
+            /*include flash message in future times*/
+        } else {
+            console.log('item updated');
+            res.redirect("/");
+            res.json(data);
+        };
+
+    });
+
+      console.log(req.body);
+   });
+   /*End of function for editing todo tasks*/
 
    app.delete('/todo/:item', (req, res) => {
 
@@ -153,28 +174,5 @@ module.exports = function (app) {
             });
     });
     /*End of Function for deleting done tasks*/
-    
-
-   /*updating items*/
-   app.post('/todo/edit/:item',urlencodedParser, (req, res) => {
-
-       /*getting data from view and adding it to database but also making sure that its not an empty string*/
-       let item = {},
-           query = {_id: req.params.id};
-
-         Todo.update(query, item, (err, data) => {
-           if (err) {
-               console.log('error in saving item: ' + err);
-               /*include flash message in future times*/
-           } else {
-               console.log('item updated');
-               res.json(data);
-           };
-       });
-       /*trying to save item to database*/
-
-      
-   });
-   /*End of updating items*/
 
 };          
