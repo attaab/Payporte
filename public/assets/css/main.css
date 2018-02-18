@@ -92,6 +92,12 @@ h4 {
 .delete_done {
     color: #D00;
     float: right;
+    transition: 2s;
+    display: none;
+}
+
+.show {
+    display: block !important;
 }
 
 .git_link{
@@ -102,4 +108,8 @@ h4 {
 
 .done {
     text-decoration: line-through;
+}
+
+ul.done-tasks li {
+
 }

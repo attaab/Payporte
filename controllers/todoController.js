@@ -42,11 +42,20 @@ const todoSchema = new mongoose.Schema({
         
 
 
-     var item = Todo({item:' req.body'});
-     var task = Done({item:' req.body'});
+     var item = Todo({item:' req.body'}),
+         task = Done({item:' req.body'});
     
+    /*the variable below is for datamasking the todocontroller*/
+    //  var donner = Done({item:' req.body'}).save((err, data) => {
+    //     if (err) {
+    //         console.log('error in saving item: ' + err);
+    //         /*include flash message in future times*/
+    //     } else {
+    //         console.log('item saved');
+    //         res.json(data)   ;
+    //     };
 
-
+    // });
 
 module.exports = function (app) {
 

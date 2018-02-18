@@ -32,7 +32,7 @@ We'd love to hear from you.
 		<!-- form for adding items -->
 		
 		<form action="/todo" method="post" atuocomplete="off">
-			<input id="write" type="text" name="item" placeholder="Make a list full of JOY 😇" required>
+			<input id="write" type="text" name="item" placeholder="Make a list full of JOY 😇😏😚😂😁" required>
 			<button type="submit">Add item</button>
 		</form>
 
@@ -50,7 +50,7 @@ We'd love to hear from you.
 						  		<button type="submit">Update</button>
 						  	</form>
 
-						      <li><%=todos[i].item%><span class="delete">X</span></li>
+						      <li href="/todo/<%=todos[i]._id%>"><%=todos[i].item%><span class="delete">X</span></li>
 						  <% } %>
 				   </ul>
 				</div>
@@ -59,13 +59,13 @@ We'd love to hear from you.
 					
 				</div>
 					<!-- html for done items -->
-				<div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
+					<div class="col-lg-5 col-md-5 col-sm-5 col-xs-5 ">
 				<br>
 						<br>
 						<h4>Done Tasks</h4>
-					<ul>
+					<ul class="">
 						<% for(i = 0; i < doneTask.length; i++) {%>
-							<li class="done"><%=doneTask[i].item%><span class="delete_done">X</span></li>
+							<li class="done done-tasks"><%=doneTask[i].item%><span class="delete_done">X</span></li>
 						<% } %>
 					</ul>
 				</div>
