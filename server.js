@@ -1,5 +1,6 @@
 const express = require('express'),
       todoController = require('./controllers/todoController'),
+      doneController = require('./controllers/doneController'),
       app = express();
 
 /*setting template engine*/
@@ -13,6 +14,10 @@ app.use(express.static('./public'));
 /*firing the todoController function*/
 todoController(app);
 /*End of firing the todo controller function*/
+
+/*Firing the done controller function*/
+//app.use('/done', doneController)
+/*End of Firing the done controller function*/
 
 
 /*listen to a port*/

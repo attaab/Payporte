@@ -18,16 +18,21 @@ We'd love to hear from you.
 	<title>Payp😇rte | Todo</title>
 	<link rel="icon" href="/assets/img/favicon2.png" type="image/icon"/>
 	<link rel="stylesheet" type="text/css" href="/assets/plugins/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="/assets/plugins/font_awesome/css/font-awesome.min.css">
 	<link rel="stylesheet" type="text/css" href="/assets/css/main.css">
 </head>
 <body>
+		<div class="container-fluid">
+			
+		<a class="git_link text-right" href="https://github.com/attaab/Payporte" target="_blank"><i class="fa fa-github"></i></a>
 
+		</div>
 	<h1>Payporte</h1>
   <div id="todo-table">
 		<!-- form for adding items -->
 		
 		<form action="/todo" method="post" atuocomplete="off">
-			<input type="text" name="item" placeholder="Add new item..." required>
+			<input id="write" type="text" name="item" placeholder="Make a list full of JOY 😇" required>
 			<button type="submit">Add item</button>
 		</form>
 
@@ -40,6 +45,11 @@ We'd love to hear from you.
 						<h4>Pending Tasks</h4>
 					<ul>
 						  <% for(i = 0; i < todos.length; i++) {%>
+						  	<form class="hidden_form">
+						  		<input type="text" name="update" value="<%=todos[i].item%>" required>
+						  		<button type="submit">Update</button>
+						  	</form>
+
 						      <li><%=todos[i].item%><span class="delete">X</span></li>
 						  <% } %>
 				   </ul>
@@ -54,9 +64,10 @@ We'd love to hear from you.
 						<br>
 						<h4>Done Tasks</h4>
 					<ul>
-						  
-						      <li></li>
-				   </ul>
+						<% for(i = 0; i < doneTask.length; i++) {%>
+							<li class="done"><%=doneTask[i].item%><span class="delete_done">X</span></li>
+						<% } %>
+					</ul>
 				</div>
 				<!--end of html for done items -->
 			</div>

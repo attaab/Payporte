@@ -20,7 +20,7 @@ body{
     clear: both;
 }
 
-input[type="text"]{
+input[type="text"] {
     width: 70%;
     padding: 20px;
     background:#181c22;
@@ -30,7 +30,7 @@ input[type="text"]{
     color: #989898;
 }
 
-button{
+button {
     padding: 20px;
     width: 30%;
     float: left;
@@ -40,6 +40,18 @@ button{
     color: #fff;
     cursor: pointer;
     font-size: 20px;
+}
+
+button .updateItem {
+    padding: 10px;
+    width: 15%;
+    float: left;
+    background: #23282e;
+    border: 0;
+    box-sizing: border-box;
+    color: #fff;
+    cursor: pointer;
+    font-size: 10px;
 }
 
 ul{
@@ -75,4 +87,19 @@ h4 {
 .delete {
     color: #D00;
     float: right;
+}
+
+.delete_done {
+    color: #D00;
+    float: right;
+}
+
+.git_link{
+    font-size: 50px;
+    margin: 0 auto;
+    float: right;
+}
+
+.done {
+    text-decoration: line-through;
 }
