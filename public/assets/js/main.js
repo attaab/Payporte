@@ -82,8 +82,25 @@
           accept: '.drag',
           drop: (ev, ui) => {
               console.log('item dropped');
-              var droppedItem = $(ui.draggable).clone();
-              $(this).append(droppedItem);
+              var droppedItem = $(ui.draggable).clone(),
+                 heldText = droppedItem.text().slice(0, droppedItem.text().length-1),/*this extracts the text in the dragged element*/
+                  todo = {item: heldText};
+                  
+              console.log(heldText);
+
+              /*using AJAX to send the text to Done tasks database*/
+              $.ajax({
+                type: 'POST',
+                url: '/done',
+                data: todo,
+                success: function(data){
+                  //do something with the data via front-end framework
+                  location.reload();
+                }
+              });
+    
+          return false;
+              /*End of using AJAX to send the text to Done tasks database*/
           }
         })
         /*End of funcion for making the done arean droppable*/

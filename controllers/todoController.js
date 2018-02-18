@@ -184,4 +184,33 @@ module.exports = function (app) {
     });
     /*End of Function for deleting done tasks*/
 
+
+    /*setting up post request to add an item to done task*/
+   app.post('/done',urlencodedParser, (req, res) => {
+       /*appending the clients request to the data array(used during data masking)*/
+       // data.push(req.body);
+       /*End of appending the clients request to the data array*/
+
+       /*getting data from view and adding it to database but also making sure that its not an empty string*/
+       console.log(req.body);
+
+       if (req.body.item !== " ") {
+           
+        var newdoneTask = Done(req.body).save((err, data) => {
+           if (err) {
+               console.log('error in saving Done item: ' + err);
+               /*include flash message in future times*/
+           } else {
+               console.log('Done item saved');
+               res.redirect("/");
+           };
+
+       });
+       } else {
+        res.redirect('/');
+       }
+       /*trying to save item to database*/
+      
+   });
+
 };          
