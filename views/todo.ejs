@@ -22,7 +22,7 @@ We'd love to hear from you.
 </head>
 <body>
 
-	<h1>Payporte To Do App</h1>
+	<h1>Payporte</h1>
   <div id="todo-table">
 		<!-- form for adding items -->
 		
@@ -31,12 +31,39 @@ We'd love to hear from you.
 			<button type="submit">Add item</button>
 		</form>
 
+		<div class="container">
+			<div class="row">
+			<!-- html for to-do items -->
+				<div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
+						<br>
+						<br>
+						<h4>Pending Tasks</h4>
+					<ul>
+						  <% for(i = 0; i < todos.length; i++) {%>
+						      <li><%=todos[i].item%><span class="delete">X</span></li>
+						  <% } %>
+				   </ul>
+				</div>
+					<!-- end of items to do -->
+				<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+					
+				</div>
+					<!-- html for done items -->
+				<div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
+				<br>
+						<br>
+						<h4>Done Tasks</h4>
+					<ul>
+						  
+						      <li></li>
+				   </ul>
+				</div>
+				<!--end of html for done items -->
+			</div>
+		</div>
+		
 		<!-- this is where items are added on the page-->
-		   <ul>
-				  <% for(i = 0; i < todos.length; i++) {%>
-				      <li><%=todos[i].item%><span class="delete">X</span></li>
-				  <% } %>
-		   </ul>
+		   
 		<!-- end of where items are added on the page -->
   </div>
 

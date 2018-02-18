@@ -49,7 +49,7 @@ module.exports = function (app) {
     });
     /*End of setting up get request for the app itself*/
 
-    /*setting up post request for the app itself*/
+    /*setting up post request to add an item*/
     app.post('/todo',urlencodedParser, (req, res) => {
         /*appending the clients request to the data array(used during data masking)*/
         // data.push(req.body);
@@ -80,6 +80,7 @@ module.exports = function (app) {
             if (err) {
                 console.log('error in deleting item: ' + err);
             } else {
+                console.log('item deleted')
                 res.json(data);
             };
         });
@@ -94,5 +95,27 @@ module.exports = function (app) {
         // res.json(data);
         // /*End of responding with JSON*/
     });
+
+    /*updating items*/
+    app.post('/todo/edit/:item',urlencodedParser, (req, res) => {
+
+        /*getting data from view and adding it to database but also making sure that its not an empty string*/
+        let item = {},
+            query = {_id: req.params.id};
+
+          Todo.update(query, item, (err, data) => {
+            if (err) {
+                console.log('error in saving item: ' + err);
+                /*include flash message in future times*/
+            } else {
+                console.log('item updated');
+                res.json(data);
+            };
+        });
+        /*trying to save item to database*/
+
+       
+    });
+    /*End of updating items*/
 
 };
