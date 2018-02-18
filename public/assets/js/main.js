@@ -1,6 +1,6 @@
   $(document).ready(function(){
     
-    /*Ajax post requests*/
+    /*Ajax post for adding item requests*/
       $('#main-form').on('submit', function(){
     
           var item = $('#write');
@@ -19,17 +19,20 @@
           return false;
     
       });
-      /*End of Ajax POST requests*/
+    /*End of Ajax post for adding item requests*/
 
         /*Ajax delete request for todo tasks*/
       $('.delete').on('click', function(){
-          var item = $(this).parent().text().replace(/ /g, "-"),
-              stringLength = $(this).parent().text().length -1;
-          newItem = $(this).parent().text().slice(0, stringLength).replace(/ /g, "-")/*slicing out the appended X and replacing all spaces with hypens*/;
+          var item = $(this).parent().attr('href'),
+              id = item.slice(6);
+
+          console.log("id for todo task " + id);
+          //     stringLength = $(this).parent().text().length -1;
+          // newItem = $(this).parent().text().slice(0, stringLength).replace(/ /g, "-")/*slicing out the appended X and replacing all spaces with hypens*/;
 
           $.ajax({
             type: 'DELETE',
-            url: '/todo/' + newItem,
+            url: '/todo/' + id,
             success: function(data){
               //do something with the data via front-end framework
               location.reload();
@@ -38,23 +41,22 @@
       });
       /*End of Ajax delete request for todo tasks*/
 
-        /*Ajax delete request for todo tasks*/
+        /*Ajax delete request for done tasks*/
 
         $('.delete_done').on('click', function(){
-          var item = $(this).parent().text().replace(/ /g, "-"),
-              stringLength = $(this).parent().text().length -1;
-              newItem = $(this).parent().text().slice(0, stringLength).replace(/ /g, "-")/*slicing out the appended X and replacing all spaces with hypens*/;
+          var id = $(this).parent().attr('href');
+              console.log("id for done task " + id);
 
           $.ajax({
             type: 'DELETE',
-            url: '/done/' + newItem,
+            url: '/done/' + id,
             success: function(data){
               //do something with the data via front-end framework
               location.reload();
             }
           });
-      });
-      /*End of Ajax delete request for todo tasks*/
+      }); 
+      /*End of Ajax delete request for done tasks*/
 
       /*creating function that allows x to be visible when it is hovered for done tasks*/
       // var delete_done = document.getElementsByClassName('delete_done');
@@ -67,8 +69,24 @@
       /*End of creating function that allows x to be visible when it is hovered*/
       
         /*making the items draggable*/
-        $('.drag').draggable();
-        /*End of making the items draggable*/  
+        $('.drag').draggable({
+          helper: 'clone',
+          over: () => {
+              console.log('hey its draggable');
+          }
+        });
+        /*End of making the items draggable*/
+
+        /*funcion for making the done arean droppable*/
+        $('.drop').droppable({
+          accept: '.drag',
+          drop: (ev, ui) => {
+              console.log('item dropped');
+              var droppedItem = $(ui.draggable).clone();
+              $(this).append(droppedItem);
+          }
+        })
+        /*End of funcion for making the done arean droppable*/
     
     });
     

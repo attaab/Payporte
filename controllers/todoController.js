@@ -54,8 +54,8 @@ const todoSchema = new mongoose.Schema({
     //         console.log('item saved');
     //         res.json(data)   ;
     //     };
-
     // });
+
 
 module.exports = function (app) {
 
@@ -99,7 +99,7 @@ module.exports = function (app) {
        /*End of appending the clients request to the data array*/
 
        /*getting data from view and adding it to database but also making sure that its not an empty string*/
-       if (req.body !== " ") {
+       if (req.body.item !== " ") {
            
         var newTodo = Todo(req.body).save((err, data) => {
            if (err) {
@@ -111,6 +111,8 @@ module.exports = function (app) {
            };
 
        });
+       } else {
+        res.redirect('/');
        }
        /*trying to save item to database*/
       
@@ -121,28 +123,31 @@ module.exports = function (app) {
    app.post('/todo/edit/:id',urlencodedParser, (req, res) => {
         let item = {},
             query = {_id : req.params.id};
-            item.item = req.body;
+            item.item = req.body.item;
 
     Todo.update(query, item, (err, data) => {
         if (err) {
             console.log('error in saving item: ' + err);
-            /*include flash message in future times*/
         } else {
             console.log('item updated');
-            res.redirect("/");
-            res.json(data);
+            res.redirect('/');
         };
 
     });
 
-      console.log(req.body);
+      console.log(item);
    });
    /*End of function for editing todo tasks*/
 
-   app.delete('/todo/:item', (req, res) => {
+   /*deleting the requested item from DB*/
+
+   app.delete('/todo/:id', (req, res) => {
+
+        console.log('to-do req.params.id : ' + req.params.id);
+        let query = {_id : req.params.id};
 
        /*Delete the requested item from DB*/
-       Todo.find({item: req.params.item.replace(/\-/g, " ")}).remove((err, data) => {
+       Todo.findById(query).remove((err, data) => {
            if (err) {
                console.log('error in deleting item: ' + err);
            } else {
@@ -163,12 +168,16 @@ module.exports = function (app) {
    });
 
     /*Function for deleting done tasks*/
-    app.delete('/done/:item', (req, res) => {
-            Done.find({item: req.params.item.replace(/\-/g, " ")}).remove((err, data) => {
+    app.delete('/done/:id', (req, res) => {
+          let query = {_id : req.params.id};
+
+            console.log('done req.params.id : ' + req.params.id);
+
+            Done.findById(query).remove((err, data) => {
                 if (err) {
                     console.log('error in deleting Done Tasks: ' + err);
                 } else {
-                    console.log('Done tasks deleted')
+                    console.log('Done tasks deleted');
                     res.json(data);
                 };
             });

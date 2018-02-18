@@ -43,15 +43,15 @@ button {
 }
 
 button .updateItem {
-    padding: 10px;
-    width: 15%;
+    padding: 5px;
+    width: 10%;
     float: left;
     background: #23282e;
     border: 0;
     box-sizing: border-box;
     color: #fff;
     cursor: pointer;
-    font-size: 10px;
+    font-size: 5px;
 }
 
 ul{
@@ -114,5 +114,5 @@ ul.done-tasks li {
 
 }
 .drag {
-    cursor: focus;
+    cursor: focus !important;
 }

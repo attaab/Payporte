@@ -43,11 +43,11 @@ We'd love to hear from you.
 						<br>
 						<br>
 						<h4>Pending Tasks</h4>
-					<ul>
+					<ul class="drop">
 						  <% for(i = 0; i < todos.length; i++) {%>
-						  	<form method="post" action="/todo/edit/<%=todos[i]._id%>">
-						  		<input type="text" name="item" value="<%=todos[i].item%>" required="required" autocomplete="off">
-						  		<button type="submit">Update</button>
+						  	<form class="update-form" id="updateForm<%=[i]%>" method="post" action="/todo/edit/<%=todos[i]._id%>">
+						  		<input id="input<%=[i]%>" type="text" name="item" value="<%=todos[i].item%>" required="required">
+						  		<button type="submit">Edit</button>
 						  	</form>
 
 						      <li class="drag" href="/todo/<%=todos[i]._id%>"><%=todos[i].item%><span class="delete">X</span></li>
@@ -63,9 +63,9 @@ We'd love to hear from you.
 				<br>
 						<br>
 						<h4>Done Tasks</h4>
-					<ul class="">
+					<ul class="drop">
 						<% for(i = 0; i < doneTask.length; i++) {%>
-							<li class="drag done done-tasks"><%=doneTask[i].item%><span class="delete_done">X</span></li>
+							<li href="<%=doneTask[i]._id%>" class="drag done done-tasks"><%=doneTask[i].item%><span class="delete_done">X</span></li>
 						<% } %>
 					</ul>
 				</div>
