@@ -48,7 +48,8 @@ We'd love to hear from you.
 							<i class="fa fa-archive"></i>
 						</h1>
 					<ul>
-						  <% for(i = 0; i < todos.length; i++) {%>
+							<% var i = todos.length%>
+						  <% while(i--) {%>
 						  	<form class="update-form" id="updateForm<%=[i]%>" method="post" action="/todo/edit/<%=todos[i]._id%>">
 						  		<input id="input<%=[i]%>" type="text" name="item" value="<%=todos[i].item%>" required="required">
 						  		<button type="submit">Edit</button>
@@ -71,7 +72,8 @@ We'd love to hear from you.
 							<i class="fa fa-archive"></i>
 						</h1>
 					<ul>
-						<% for(i = 0; i < doneTask.length; i++) {%>
+						<% var i = doneTask.length%>
+						  <% while(i--) {%>
 							<li href="<%=doneTask[i]._id%>" class="draggedDoneTask done done-tasks"><%=doneTask[i].item%><span class="delete_done">X</span></li>
 						<% } %>
 					</ul>

@@ -116,3 +116,11 @@ ul.done-tasks li {
 .drag {
     cursor: focus !important;
 }
+
+.update-form {
+    display: none;
+}
+
+.hide {
+    display: none;
+}

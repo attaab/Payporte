@@ -67,6 +67,19 @@
         $(this).children().removeClass('show')
      });
       /*End of creating function that allows x to be visible when it is hovered*/
+
+
+      /*function for displaying update form when the list name is double clicked*/
+      function enableUpdate() {
+          $('.drag').on('dblclick', (e) => {
+             $target = $(e.target);
+                
+                $target.prev().addClass('show');
+                $target.addClass('hide');
+          });
+      };
+      /*End of function for displaying update form when the list name is double clicked*/
+
       
         /*making the items draggable*/
         $('.drag').draggable({
@@ -178,6 +191,8 @@
 
         })
         /*End of funcion for making the pending area droppable*/
+
+        enableUpdate()//firing function that allows change of content
     
     });
     
