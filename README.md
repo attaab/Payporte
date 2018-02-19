@@ -6,10 +6,13 @@ these men are named below - __Be warned! their names may make you shiver__<br>
 #Express.
 #Node.
 **But in essence:**<br>
-This is a to-do app made with MEAN stack skills for [Payporte](www.payporte.com).
+This is a to-do app made with MEAN stack skills for [Payporte](www.payporte.com).<br><br>
 
 
 <img href="https://payporte-todo.herokuapp.com/" style='align-content: center;' src="./public/assets/displayImage.jpg" width="888px">
+
+<br>
+<br>
 
 
 
