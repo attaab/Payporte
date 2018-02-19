@@ -43,11 +43,11 @@ We'd love to hear from you.
 						<br>
 						<br>
 						<h4>Pending Tasks</h4>
-						
-						<h1  class="drop">
+
+						<h1  class="droppedDoneTask">
 							<i class="fa fa-archive"></i>
 						</h1>
-					<ul class="drop">
+					<ul>
 						  <% for(i = 0; i < todos.length; i++) {%>
 						  	<form class="update-form" id="updateForm<%=[i]%>" method="post" action="/todo/edit/<%=todos[i]._id%>">
 						  		<input id="input<%=[i]%>" type="text" name="item" value="<%=todos[i].item%>" required="required">
@@ -72,7 +72,7 @@ We'd love to hear from you.
 						</h1>
 					<ul>
 						<% for(i = 0; i < doneTask.length; i++) {%>
-							<li href="<%=doneTask[i]._id%>" class="drag done done-tasks"><%=doneTask[i].item%><span class="delete_done">X</span></li>
+							<li href="<%=doneTask[i]._id%>" class="draggedDoneTask done done-tasks"><%=doneTask[i].item%><span class="delete_done">X</span></li>
 						<% } %>
 					</ul>
 				</div>

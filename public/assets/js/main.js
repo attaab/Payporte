@@ -73,11 +73,12 @@
           helper: 'clone',
           over: () => {
               console.log('hey its draggable');
+              $('.drop').addClass('focus')
           }
         });
         /*End of making the items draggable*/
 
-        /*funcion for making the done arean droppable*/
+        /*funcion for making the done area droppable*/
         $('.drop').droppable({
           accept: '.drag',
           drop: (ev, ui) => {
@@ -99,11 +100,84 @@
                 }
               });
     
-          return false;
               /*End of using AJAX to send the text to Done tasks database*/
+
+               /*using AJAX to delete the dragged text in database*/
+              var item = $(ui.draggable).clone().attr('href');/*cllecting the dragged item id from the href*/
+                   tag = item.slice(6);
+
+                $.ajax({
+                  type: 'DELETE',
+                  url: '/todo/' + tag,
+                  success: function(data){
+                    //do something with the data via front-end framework
+                    location.reload();
+                  }
+                });
+
+          return false;
+             /*End of using AJAX to delete the dragged text in database*/
           }
+
         })
-        /*End of funcion for making the done arean droppable*/
+        /*End of funcion for making the done area droppable*/
+
+
+         /*making the done items draggable*/
+        $('.draggedDoneTask').draggable({
+          helper: 'clone',
+          over: () => {
+              console.log('hey its draggable');
+              $('.droppedDoneTask').addClass('focus')
+          }
+        });
+        /*End of making the items draggable*/
+
+        /*funcion for making the pending area droppable*/
+        $('.droppedDoneTask').droppable({
+          accept: '.draggedDoneTask',
+          drop: (ev, ui) => {
+              console.log('item dropped');
+              var droppedItem = $(ui.draggable).clone(),
+                 heldText = droppedItem.text().slice(0, droppedItem.text().length-1),/*this extracts the text in the dragged element*/
+                  todo = {item: heldText};
+                  
+              console.log(heldText);
+
+              /*using AJAX to send the text to Done tasks database*/
+              $.ajax({
+                type: 'POST',
+                url: '/todo',
+                data: todo,
+                success: function(data){
+                  //do something with the data via front-end framework
+                  location.reload();
+                }
+              });
+    
+          
+              /*End of using AJAX to send the text to Done tasks database*/
+
+              /*using ajax to delete done item from database when it has been moved*/
+
+              var identification = $(ui.draggable).clone().attr('href');
+              console.log("id for done task " + identification);
+
+              $.ajax({
+                type: 'DELETE',
+                url: '/done/' + identification,
+                success: function(data){
+                  //do something with the data via front-end framework
+                  location.reload();
+                }
+              });
+
+              /*using ajax to delete done item from database when it has been moved*/
+
+          }
+
+        })
+        /*End of funcion for making the pending area droppable*/
     
     });
     
