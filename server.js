@@ -1,6 +1,5 @@
 const express = require('express'),
       todoController = require('./controllers/todoController'),
-      doneController = require('./controllers/doneController'),
       app = express();
 
 /*setting template engine*/

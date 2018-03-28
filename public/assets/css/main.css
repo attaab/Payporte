@@ -124,3 +124,7 @@ ul.done-tasks li {
 .hide {
     display: none;
 }
+
+.fa-archive {
+    cursor: focus;
+}

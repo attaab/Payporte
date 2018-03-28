@@ -20,6 +20,8 @@ const bodyParser = require('body-parser'),
 
 /*Getting feedbacks for datbase connections*/
     db.on('error', console.error.bind(console, 'there was an error in connecting to the database in todoController'));
+    /*End of enabling the program run witlh out internet - i want to create an array or object where manipulations would be made*/
+         
     db.once('open', () => {console.log('connection to database esthablished in todoController')});
     /*End of getting database connection information*/
 /*Creating mongoose todo schema (it works more like a blue print for mongoose)*/
@@ -71,7 +73,10 @@ module.exports = function (app) {
         /*Using Async to query from DB*/
         async.series([function(callback){
             Todo.find({},function(err,todo){
-                if(err) console.log('error from querying todo tasks from DB : ' + err);
+                if(err) {
+                    console.log('error from querying todo tasks from DB : ' + err);
+
+            }
                 todoTasks = todo;
                 callback(null, todo);
             })
